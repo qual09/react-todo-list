@@ -38,7 +38,19 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+
+        {/* Header */}
+        <header className="header">
+          <h1>Todo List</h1>
+        </header>
+        {/* Body */}
+        <div className="container">
+          <Todos todos={this.state.todos} markComplete={this.markComplete} />
+        </div>
+        {/* Footer */}
+        <footer className="footer">
+          &copy; 2020 Hieu CPX. All rights reserved.
+          </footer>
       </div>
     );
   }
