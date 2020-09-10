@@ -24,6 +24,7 @@ class App extends React.Component {
     ]
   }
 
+  // Toggle Complete
   markComplete = (id) => {
     this.setState({
       todos: this.state.todos.map(todo => {
@@ -35,6 +36,13 @@ class App extends React.Component {
     });
   }
 
+  // Delete Todo
+  delTodo = (id) => {
+    this.setState({
+      todos: [...this.state.todos.filter(todo => todo.id !== id)]
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -43,14 +51,17 @@ class App extends React.Component {
         <header className="header">
           <h1>Todo List</h1>
         </header>
+
         {/* Body */}
         <div className="container">
-          <Todos todos={this.state.todos} markComplete={this.markComplete} />
+          <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
         </div>
+
         {/* Footer */}
         <footer className="footer">
           &copy; 2020 Hieu CPX. All rights reserved.
-          </footer>
+        </footer>
+
       </div>
     );
   }
