@@ -13,9 +13,17 @@
   padding: 20px;
 }
 
-header {
-  margin-bottom: 15px;
-  text-align: center;
+.btn {
+  background: #555;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 20px;
+}
+
+.btn:hover {
+  background: #666;
 }
 
 footer {

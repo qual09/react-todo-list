@@ -1,5 +1,8 @@
 import React from 'react';
+import Header from './components/layout/Header';
 import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
+import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
 
@@ -43,17 +46,26 @@ class App extends React.Component {
     });
   }
 
+  // Add Todo
+  addTodo = (title) => {
+    const newTodo = {
+      id: uuidv4(),
+      title: title,
+      completed: false,
+    }
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  }
+
   render() {
     return (
       <div className="App">
 
         {/* Header */}
-        <header className="header">
-          <h1>Todo List</h1>
-        </header>
+        <Header />
 
         {/* Body */}
         <div className="container">
+          <AddTodo addTodo={this.addTodo} />
           <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
         </div>
 
