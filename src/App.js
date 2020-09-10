@@ -5,29 +5,37 @@ import Footer from './components/layout/Footer';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import About from './components/pages/About';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 import './App.css';
 
 class App extends React.Component {
   state = {
     todos: [
-      {
-        id: 1,
-        title: 'Take out the trash',
-        completed: false
-      },
-      {
-        id: 2,
-        title: 'Meeting with boss',
-        completed: false
-      },
-      {
-        id: 3,
-        title: 'Walk the dog',
-        completed: false
-      },
+      // {
+      //   id: 1,
+      //   title: 'Take out the trash',
+      //   completed: false
+      // },
+      // {
+      //   id: 2,
+      //   title: 'Meeting with boss',
+      //   completed: false
+      // },
+      // {
+      //   id: 3,
+      //   title: 'Walk the dog',
+      //   completed: false
+      // },
     ]
+  }
+
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then(res => {
+        this.setState({ todos: res.data });
+      })
   }
 
   // Toggle Complete
@@ -44,19 +52,21 @@ class App extends React.Component {
 
   // Delete Todo
   delTodo = (id) => {
-    this.setState({
-      todos: [...this.state.todos.filter(todo => todo.id !== id)]
-    });
+    axios
+      .delete('https://jsonplaceholder.typicode.com/todos/' + id)
+      .then(() => this.setState({
+        todos: [...this.state.todos.filter(todo => todo.id !== id)]
+      }));
   }
 
   // Add Todo
   addTodo = (title) => {
-    const newTodo = {
-      id: uuidv4(),
-      title: title,
-      completed: false,
-    }
-    this.setState({ todos: [...this.state.todos, newTodo] });
+    axios
+      .post('https://jsonplaceholder.typicode.com/todos', {
+        title,
+        completed: false
+      })
+      .then(res => this.setState({ todos: [...this.state.todos, res.data] }))
   }
 
   render() {

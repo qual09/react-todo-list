@@ -4,18 +4,17 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <header style={headerStyle}>
-      <h1>Todo List</h1>
+      <h1 style={{ marginBottom: '5px' }}>Todo List</h1>
       <Link style={linkStyle} to="/">Home</Link>
       |
       <Link style={linkStyle} to="/about">About</Link>
-    </header>
+    </header >
   )
 }
 
 const headerStyle = {
   // backgroundColor: '#eee',
-  marginBottom: '15px',
-  paddingTop: '10px',
+  padding: '10px 0 15px 0',
   textAlign: 'center',
 }
 
