@@ -71,7 +71,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
+      <Router basename="/portfolio/react-todo-list">
         <div className="App">
           {/* Header */}
           <Header />
