@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import { v4 as uuidv4 } from 'uuid';
@@ -70,9 +71,7 @@ class App extends React.Component {
         </div>
 
         {/* Footer */}
-        <footer className="footer">
-          &copy; 2020 Hieu CPX. All rights reserved.
-        </footer>
+        <Footer />
 
       </div>
     );
