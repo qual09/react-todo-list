@@ -8,8 +8,12 @@ export class AddTodo extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.addTodo(this.state.title);
-    this.setState({ title: '' });
+    if (this.state.title) {
+      this.props.addTodo(this.state.title);
+      this.setState({ title: '' });
+    } else {
+      alert('Field is empty!');
+    }
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
